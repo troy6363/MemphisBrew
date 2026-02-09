@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Our Soul | Memphis Brew Co.</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☕</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#78350F',       /* Coffee Brown */
+                        secondary: '#92400E',
+                        cta: '#FBBF24',           /* Warm Gold */
+                        background: '#FEF3C7',    /* Cream */
+                        text: '#451A03',          /* Dark Brown */
+                    },
+                    fontFamily: {
+                        sans: ['"DM Sans"', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @layer base {
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                background-color: #FEF3C7;
+                color: #451A03;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+        }
+
+        .glass-nav {
+            background: rgba(254, 243, 199, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(120, 53, 15, 0.1);
+        }
+
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="selection:bg-primary selection:text-background">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-[100] glass-nav">
+        <div class="max-w-[1440px] mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="index.html" class="text-lg font-black tracking-tighter uppercase text-primary">Memphis Brew
+                Company<span class="text-cta">.</span></a>
+
+            <div
+                class="hidden md:flex items-center space-x-12 text-sm font-bold uppercase tracking-widest text-primary/70">
+                <a href="index.html#menu" class="hover:text-primary transition-colors">The Menu</a>
+                <a href="about.html" class="text-primary underline underline-offset-8 decoration-cta decoration-2">Our
+                    Soul</a>
+                <a href="index.html#locations" class="hover:text-primary transition-colors">Memphis</a>
+            </div>
+
+            <div class="flex items-center space-x-6">
+                <a href="index.html#visit"
+                    class="bg-primary text-background px-8 py-3 rounded-full text-xs font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-lg">
+                    Order Now
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="pt-48 pb-20 px-6">
+        <div class="max-w-[1440px] mx-auto">
+            <h1
+                class="text-7xl md:text-[12rem] font-black tracking-tighter text-primary uppercase leading-[0.85] reveal-on-scroll">
+                Legacy<br>In Every<br><span class="text-cta">Drop.</span>
+            </h1>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section id="story" class="py-20 md:py-32 px-4 md:px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20">
+            <div class="space-y-8 md:space-y-12 reveal-on-scroll">
+                <span class="text-xs font-black uppercase tracking-[0.3em] text-cta block">Our Story</span>
+                <h2 class="text-4xl md:text-7xl font-black uppercase tracking-tighter text-primary leading-none">A
+                    Multi-Generational Family Soul.</h2>
+                <div class="space-y-6 text-lg md:text-xl text-secondary/80 leading-relaxed font-medium">
+                    <p>Memphis Brew Company isn't just a coffee shop. It's a living archive of the Williams family.
+                        Founded over three generations ago in the heart of Memphis, we’ve been perfecting the art of the
+                        roast since 1954.</p>
+                    <p>As a Black-owned family business, we believe that coffee is the rhythm of the city. We took the
+                        grit of Beale Street and the grace of the Mississippi to create a space where everyone is
+                        family. passed down from father to daughter, the secret to our "Gold" roast remains within these
+                        walls.</p>
+                </div>
+            </div>
+            <div class="" style="transition-delay: 200ms;">
+                <div
+                    class="aspect-square rounded-[3rem] overflow-hidden shadow-2xl bg-primary/10 flex items-center justify-center">
+                    <img src="assets/coffee.PNG" alt="Williams Family Legacy" class="w-full h-full object-cover block"
+                        style="image-rendering: -webkit-optimize-contrast; image-rendering: high-quality;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="py-32 px-6 bg-primary text-background overflow-hidden">
+        <div class="max-w-7xl mx-auto space-y-24">
+            <div class="text-center reveal-on-scroll">
+                <span class="text-xs font-black uppercase tracking-[0.3em] text-cta mb-4 block">Testimonials</span>
+                <h2 class="text-6xl md:text-8xl font-black uppercase tracking-tighter">Pure Soul Approval.</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Review 1 -->
+                <div class="space-y-8 p-12 bg-white/5 rounded-[2rem] border border-white/10 reveal-on-scroll">
+                    <div class="flex text-cta space-x-1">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                    <p class="text-xl font-medium leading-relaxed italic opacity-80">"The best espresso in the 901. You
+                        can literally taste the history. It's more than coffee; it's an experience."</p>
+                    <div>
+                        <span class="block font-black uppercase tracking-widest text-xs">Marcus J.</span>
+                        <span class="block text-[10px] uppercase tracking-widest opacity-40">Local Artist</span>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="space-y-8 p-12 bg-white/5 rounded-[2rem] border border-white/10 reveal-on-scroll"
+                    style="transition-delay: 100ms;">
+                    <div class="flex text-cta space-x-1">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                    <p class="text-xl font-medium leading-relaxed italic opacity-80">"Finally, a minimalist space that
+                        still feels like home. The Williams family knows exactly how to roast soul."</p>
+                    <div>
+                        <span class="block font-black uppercase tracking-widest text-xs">Sarah L.</span>
+                        <span class="block text-[10px] uppercase tracking-widest opacity-40">Community Leader</span>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="space-y-8 p-12 bg-white/5 rounded-[2rem] border border-white/10 reveal-on-scroll"
+                    style="transition-delay: 200ms;">
+                    <div class="flex text-cta space-x-1">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                    <p class="text-xl font-medium leading-relaxed italic opacity-80">"Unmatched vibes. The 'Memphis
+                        Gold' is liquid magic. Proud to support a multi-gen Black legacy."</p>
+                    <div>
+                        <span class="block font-black uppercase tracking-widest text-xs">David R.</span>
+                        <span class="block text-[10px] uppercase tracking-widest opacity-40">Blues Musician</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simple Footer -->
+    <footer class="py-20 px-6 border-t border-primary/10">
+        <div
+            class="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-12 text-center md:text-left">
+            <div class="space-y-4">
+                <h2 class="text-4xl font-black tracking-tighter uppercase text-primary leading-none">Memphis<br>Brew
+                    Company.</h2>
+                <p class="text-[10px] uppercase tracking-widest text-primary font-black">(901) 323-4567 •
+                    info@memphisbrew.co</p>
+            </div>
+            <div class="flex space-x-12 text-xs font-black uppercase tracking-widest text-primary/50">
+                <a href="index.html" class="hover:text-primary transition-colors">Home</a>
+                <a href="index.html#menu" class="hover:text-primary transition-colors">Menu</a>
+                <a href="index.html#locations" class="hover:text-primary transition-colors">Find Us</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('reveal-active');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>
