@@ -46,6 +46,10 @@
                 -webkit-font-smoothing: antialiased;
                 -moz-osx-font-smoothing: grayscale;
             }
+
+            body.no-scroll {
+                overflow: hidden;
+            }
         }
 
         .glass-nav {
@@ -641,9 +645,11 @@
 
             if (isOpen) {
                 menu.classList.remove('open');
+                document.body.classList.remove('no-scroll');
                 path.setAttribute('d', 'M4 8h16M4 16h16');
             } else {
                 menu.classList.add('open');
+                document.body.classList.add('no-scroll');
                 path.setAttribute('d', 'M6 18L18 6M6 6l12 12');
             }
         }

@@ -43,6 +43,10 @@
                 -webkit-font-smoothing: antialiased;
                 -moz-osx-font-smoothing: grayscale;
             }
+
+            body.no-scroll {
+                overflow: hidden;
+            }
         }
 
         .glass-nav {
@@ -61,6 +65,22 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Mobile Menu */
+        #mobile-menu {
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            pointer-events: none;
+            visibility: hidden;
+            transform: translateY(-20px);
+        }
+
+        #mobile-menu.open {
+            opacity: 1;
+            pointer-events: auto;
+            visibility: visible;
+            transform: translateY(0);
+        }
     </style>
 </head>
 
@@ -68,8 +88,9 @@
 
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-[100] glass-nav">
-        <div class="max-w-[1440px] mx-auto px-6 h-20 flex justify-between items-center">
-            <a href="index.html" class="text-lg font-black tracking-tighter uppercase text-primary">Memphis Brew
+        <div class="max-w-[1440px] mx-auto px-4 md:px-6 h-20 flex justify-between items-center">
+            <a href="index.html" class="text-base md:text-lg font-black tracking-tighter uppercase text-primary">Memphis
+                Brew
                 Company<span class="text-cta">.</span></a>
 
             <div
@@ -80,11 +101,37 @@
                 <a href="index.html#locations" class="hover:text-primary transition-colors">Memphis</a>
             </div>
 
-            <div class="flex items-center space-x-6">
+            <div class="flex items-center space-x-4 md:space-x-6">
                 <a href="index.html#visit"
-                    class="bg-primary text-background px-8 py-3 rounded-full text-xs font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-lg">
+                    class="bg-primary text-background px-6 md:px-8 py-3 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-lg">
                     Order Now
                 </a>
+
+                <!-- Mobile Toggle -->
+                <button onclick="toggleMobileMenu()" class="md:hidden text-primary p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path id="menu-icon-path" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                            d="M4 8h16M4 16h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu"
+            class="fixed inset-0 top-20 bg-background z-[90] md:hidden p-8 flex flex-col justify-between">
+            <div class="space-y-12 pt-12">
+                <a href="index.html#menu" onclick="toggleMobileMenu()"
+                    class="block text-4xl font-black uppercase tracking-tighter text-primary">The Menu.</a>
+                <a href="about.html" onclick="toggleMobileMenu()"
+                    class="block text-4xl font-black uppercase tracking-tighter text-cta underline underline-offset-8 decoration-2">Our
+                    Soul.</a>
+                <a href="index.html#locations" onclick="toggleMobileMenu()"
+                    class="block text-4xl font-black uppercase tracking-tighter text-primary">Memphis.</a>
+            </div>
+            <div class="pb-12 space-y-4">
+                <p class="text-[10px] font-black uppercase tracking-[0.3em] text-cta">Legacy Roasters</p>
+                <p class="text-sm font-bold text-primary/60">(901) 323-4567</p>
             </div>
         </div>
     </nav>
@@ -204,6 +251,23 @@
             });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+
+        // Mobile Menu Logic
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const path = document.getElementById('menu-icon-path');
+            const isOpen = menu.classList.contains('open');
+
+            if (isOpen) {
+                menu.classList.remove('open');
+                document.body.classList.remove('no-scroll');
+                path.setAttribute('d', 'M4 8h16M4 16h16');
+            } else {
+                menu.classList.add('open');
+                document.body.classList.add('no-scroll');
+                path.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+            }
+        }
     </script>
 </body>
 
