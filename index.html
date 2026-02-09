@@ -115,6 +115,16 @@
             visibility: visible;
             transform: translateY(0);
         }
+
+        #main-content {
+            transition: filter 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        #main-content.blurred {
+            filter: blur(10px);
+            pointer-events: none;
+            user-select: none;
+        }
     </style>
 </head>
 
@@ -122,6 +132,10 @@
 
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-[100] glass-nav">
+        ... (keeping nav as is, just showing context for insert) ...
+    </nav>
+
+    <div id="main-content">
         <div class="max-w-[1440px] mx-auto px-4 md:px-6 h-20 flex justify-between items-center">
             <a href="#" class="text-base md:text-lg font-black tracking-tighter uppercase text-primary">Memphis Brew
                 Company<span class="text-cta">.</span></a>
@@ -151,8 +165,7 @@
 
         <!-- Mobile Menu Overlay -->
         <div id="mobile-menu"
-            class="fixed inset-0 top-20 bg-primary/95 backdrop-blur-2xl z-[90] md:hidden p-8 flex flex-col justify-between"
-            style="backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);">
+            class="fixed inset-0 top-20 bg-primary/90 z-[90] md:hidden p-8 flex flex-col justify-between">
             <div class="space-y-12 pt-12">
                 <a href="#menu" onclick="toggleMobileMenu()"
                     class="block text-4xl font-black uppercase tracking-tighter text-background">The Menu.</a>
@@ -166,390 +179,414 @@
                 <p class="text-sm font-bold text-background/60">(901) 323-4567</p>
             </div>
         </div>
-    </nav>
+        </nav>
 
-    <!-- Hero Section -->
-    <section class="relative min-h-screen flex flex-col justify-end pt-32 pb-20 px-6 overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <!-- Using Unsplash for high-quality artisanal images if generation is pending -->
-            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=2670"
-                alt="Artisanal Coffee" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
-        </div>
+        <!-- Hero Section -->
+        <section class="relative min-h-screen flex flex-col justify-end pt-32 pb-20 px-6 overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <!-- Using Unsplash for high-quality artisanal images if generation is pending -->
+                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=2670"
+                    alt="Artisanal Coffee" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+            </div>
 
-        <div class="relative z-10 max-w-[1440px] mx-auto w-full">
-            <div class="max-w-4xl space-y-12 reveal-on-scroll">
-                <h1 class="text-huge font-black tracking-tighter text-primary uppercase">
-                    Memphis<br>Brew Co<span class="text-cta">.</span>
-                </h1>
-                <div class="flex flex-col md:flex-row md:items-end gap-8">
-                    <p class="text-xl md:text-3xl font-medium leading-tight max-w-xl text-secondary">
-                        A sanctuary of slow roasts and rhythm. Redefining the Memphis coffee culture through exaggerated
-                        minimalism.
-                    </p>
-                    <div class="flex-shrink-0">
-                        <a href="#menu" class="group flex items-center space-x-4">
-                            <span
-                                class="w-12 h-12 md:w-16 md:h-16 rounded-full border-2 border-primary flex items-center justify-center group-hover:bg-primary transition-all duration-500">
-                                <svg class="w-5 h-5 md:w-6 md:h-6 text-primary group-hover:text-background transition-colors"
-                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                                </svg>
-                            </span>
-                            <span
-                                class="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-primary">Discover
-                                the
-                                Ritual</span>
+            <div class="relative z-10 max-w-[1440px] mx-auto w-full">
+                <div class="max-w-4xl space-y-12 reveal-on-scroll">
+                    <h1 class="text-huge font-black tracking-tighter text-primary uppercase">
+                        Memphis<br>Brew Co<span class="text-cta">.</span>
+                    </h1>
+                    <div class="flex flex-col md:flex-row md:items-end gap-8">
+                        <p class="text-xl md:text-3xl font-medium leading-tight max-w-xl text-secondary">
+                            A sanctuary of slow roasts and rhythm. Redefining the Memphis coffee culture through
+                            exaggerated
+                            minimalism.
+                        </p>
+                        <div class="flex-shrink-0">
+                            <a href="#menu" class="group flex items-center space-x-4">
+                                <span
+                                    class="w-12 h-12 md:w-16 md:h-16 rounded-full border-2 border-primary flex items-center justify-center group-hover:bg-primary transition-all duration-500">
+                                    <svg class="w-5 h-5 md:w-6 md:h-6 text-primary group-hover:text-background transition-colors"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                                    </svg>
+                                </span>
+                                <span
+                                    class="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-primary">Discover
+                                    the
+                                    Ritual</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Manifesto Section -->
+        <section id="about" class="py-20 md:py-32 px-4 md:px-6 bg-primary text-background overflow-hidden">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
+                    <div class="space-y-8 md:space-y-12 reveal-on-scroll">
+                        <h2 class="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none">
+                            Grit, Grace &<br><span class="text-cta">Gold.</span>
+                        </h2>
+                        <p class="text-xl md:text-2xl font-light leading-relaxed opacity-80">
+                            Memphis is a city built on soul. At MBC, we channel that raw energy into every bean. Our
+                            space
+                            is intentionally quiet, allowing the ritual of coffee to take center stage. No clutter, no
+                            noise—just pure craft.
+                        </p>
+                        <div class="grid grid-cols-2 gap-8 pt-6">
+                            <div>
+                                <span class="block text-4xl font-black text-cta mb-2">01.</span>
+                                <span class="text-xs font-bold uppercase tracking-widest block mb-4">The Roast</span>
+                                <p class="text-sm opacity-60">Small batch precision. Profiled for depth and clarity.</p>
+                            </div>
+                            <div>
+                                <span class="block text-4xl font-black text-cta mb-2">02.</span>
+                                <span class="text-xs font-bold uppercase tracking-widest block mb-4">The Rhythm</span>
+                                <p class="text-sm opacity-60">Curated Memphis vinyl spinning daily. Analog vibes only.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&q=80&w=2678"
+                                alt="Interior Design" class="w-full h-full object-cover">
+                        </div>
+                        <div
+                            class="absolute -bottom-10 -right-10 bg-cta text-primary p-12 rounded-full hidden md:block">
+                            <p class="text-xs font-black uppercase tracking-widest leading-none text-center">
+                                Est.<br><span class="text-3xl">2026</span><br>Memphis
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Story Section -->
+        <section id="story" class="py-20 md:py-32 px-4 md:px-6">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20">
+                <div class="space-y-8 md:space-y-12 reveal-on-scroll">
+                    <span class="text-xs font-black uppercase tracking-[0.3em] text-cta block">Our Story</span>
+                    <h2 class="text-4xl md:text-7xl font-black uppercase tracking-tighter text-primary leading-none">A
+                        Multi-Generational Family Soul.</h2>
+                    <div class="space-y-6 text-xl text-secondary/80 leading-relaxed font-medium">
+                        <p>Memphis Brew Company isn't just a coffee shop. It's a living archive of the Williams family.
+                            Founded over three generations ago in the heart of Memphis, we’ve been perfecting the art of
+                            the
+                            roast since 1954.</p>
+                        <p>As a Black-owned family business, we believe that coffee is the rhythm of the city. We took
+                            the
+                            grit of Beale Street and the grace of the Mississippi to create a space where everyone is
+                            family. Passed down from father to daughter, the secret to our "Gold" roast remains within
+                            these
+                            walls.</p>
+                    </div>
+                </div>
+                <div class="">
+                    <div
+                        class="aspect-square rounded-[3rem] overflow-hidden shadow-2xl bg-primary/10 flex items-center justify-center">
+                        <img src="assets/coffee.PNG" alt="Williams Family Legacy"
+                            class="w-full h-full object-cover block"
+                            style="image-rendering: -webkit-optimize-contrast; image-rendering: high-quality;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section id="menu" class="py-20 md:py-32 px-4 md:px-6">
+            <div class="max-w-5xl mx-auto space-y-16 md:space-y-24">
+                <div class="text-center reveal-on-scroll">
+                    <span class="text-xs font-black uppercase tracking-[0.3em] text-cta mb-4 block">The Selection</span>
+                    <h2 class="text-5xl md:text-8xl font-black uppercase tracking-tighter text-primary">The Ritual Menu.
+                    </h2>
+                </div>
+
+                <div class="space-y-12 md:space-y-16 reveal-on-scroll">
+                    <!-- Menu Category -->
+                    <div class="space-y-8">
+                        <h3
+                            class="text-xs font-black uppercase tracking-widest border-b border-primary/20 pb-4 text-primary/50">
+                            Signature Brews</h3>
+
+                        <div class="grid gap-8 md:gap-12">
+                            <!-- Menu Item -->
+                            <div
+                                class="menu-item group flex justify-between items-end pb-8 border-b border-primary/10 transition-all hover:bg-primary/5 px-0 md:px-4 md:-mx-4 rounded-xl">
+                                <div class="space-y-2">
+                                    <h4
+                                        class="text-xl md:text-2xl font-bold text-primary group-hover:text-cta transition-colors">
+                                        Memphis Gold Latte</h4>
+                                    <p class="text-xs md:text-sm text-secondary/60">House-made spiced honey, oat milk,
+                                        triple gold
+                                        dust.</p>
+                                    <button onclick="addToCart('Memphis Gold Latte', 6.50)"
+                                        class="text-[10px] items-center font-black uppercase tracking-[0.2em] text-cta opacity-100 md:opacity-0 group-hover:opacity-100 transition-all pt-2 flex space-x-2">
+                                        <span>+ Add to Ritual</span>
+                                    </button>
+                                </div>
+                                <span class="text-lg md:text-xl font-black text-primary">$6.50</span>
+                            </div>
+
+                            <div
+                                class="menu-item group flex justify-between items-end pb-8 border-b border-primary/10 transition-all hover:bg-primary/5 px-0 md:px-4 md:-mx-4 rounded-xl">
+                                <div class="space-y-2">
+                                    <h4
+                                        class="text-xl md:text-2xl font-bold text-primary group-hover:text-cta transition-colors">
+                                        Beale
+                                        St. Black</h4>
+                                    <p class="text-xs md:text-sm text-secondary/60">Nitro-charged cold brew with a
+                                        subtle
+                                        hickory smoke
+                                        finish.</p>
+                                    <button onclick="addToCart('Beale St. Black', 5.50)"
+                                        class="text-[10px] items-center font-black uppercase tracking-[0.2em] text-cta opacity-100 md:opacity-0 group-hover:opacity-100 transition-all pt-2 flex space-x-2">
+                                        <span>+ Add to Ritual</span>
+                                    </button>
+                                </div>
+                                <span class="text-lg md:text-xl font-black text-primary">$5.50</span>
+                            </div>
+
+                            <div
+                                class="menu-item group flex justify-between items-end pb-8 border-b border-primary/10 transition-all hover:bg-primary/5 px-0 md:px-4 md:-mx-4 rounded-xl">
+                                <div class="space-y-2">
+                                    <h4
+                                        class="text-xl md:text-2xl font-bold text-primary group-hover:text-cta transition-colors">
+                                        Delta
+                                        Pour Over</h4>
+                                    <p class="text-xs md:text-sm text-secondary/60">Single origin Ethiopian beans.
+                                        Bright,
+                                        floral,
+                                        soulful.</p>
+                                    <button onclick="addToCart('Delta Pour Over', 4.75)"
+                                        class="text-[10px] items-center font-black uppercase tracking-[0.2em] text-cta opacity-100 md:opacity-0 group-hover:opacity-100 transition-all pt-2 flex space-x-2">
+                                        <span>+ Add to Ritual</span>
+                                    </button>
+                                </div>
+                                <span class="text-lg md:text-xl font-black text-primary">$4.75</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Menu -->
+                    <div class="text-center pt-12">
+                        <a href="#"
+                            class="inline-block border-2 border-primary text-primary px-10 py-4 rounded-full text-sm font-black uppercase tracking-widest hover:bg-primary hover:text-background transition-all">
+                            View Full Menu
                         </a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Manifesto Section -->
-    <section id="about" class="py-20 md:py-32 px-4 md:px-6 bg-primary text-background overflow-hidden">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
-                <div class="space-y-8 md:space-y-12 reveal-on-scroll">
-                    <h2 class="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none">
-                        Grit, Grace &<br><span class="text-cta">Gold.</span>
+        <!-- Reviews Section -->
+        <section class="py-20 md:py-32 px-4 md:px-6 bg-primary text-background overflow-hidden">
+            <div class="max-w-7xl mx-auto space-y-16 md:space-y-24">
+                <div class="text-center reveal-on-scroll">
+                    <span class="text-xs font-black uppercase tracking-[0.3em] text-cta mb-4 block">Testimonials</span>
+                    <h2 class="text-5xl md:text-8xl font-black uppercase tracking-tighter">Pure Soul Approval.</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <!-- Review 1 -->
+                    <div
+                        class="space-y-6 md:space-y-8 p-8 md:p-12 bg-white/5 rounded-[2rem] border border-white/10 reveal-on-scroll">
+                        <div class="flex text-cta space-x-1">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p class="text-lg md:text-xl font-medium leading-relaxed italic opacity-80">"The best espresso
+                            in
+                            the 901. You
+                            can literally taste the history. It's more than coffee; it's an experience."</p>
+                        <div>
+                            <span class="block font-black uppercase tracking-widest text-xs">Marcus J.</span>
+                            <span class="block text-[10px] uppercase tracking-widest opacity-40">Local Artist</span>
+                        </div>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="space-y-8 p-12 bg-white/5 rounded-[2rem] border border-white/10 reveal-on-scroll"
+                        style="transition-delay: 100ms;">
+                        <div class="flex text-cta space-x-1">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p class="text-xl font-medium leading-relaxed italic opacity-80">"Finally, a minimalist space
+                            that
+                            still feels like home. The Williams family knows exactly how to roast soul."</p>
+                        <div>
+                            <span class="block font-black uppercase tracking-widest text-xs">Sarah L.</span>
+                            <span class="block text-[10px] uppercase tracking-widest opacity-40">Community Leader</span>
+                        </div>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="space-y-8 p-12 bg-white/5 rounded-[2rem] border border-white/10 reveal-on-scroll"
+                        style="transition-delay: 200ms;">
+                        <div class="flex text-cta space-x-1">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p class="text-xl font-medium leading-relaxed italic opacity-80">"Unmatched vibes. The 'Memphis
+                            Gold' is liquid magic. Proud to support a multi-gen Black legacy."</p>
+                        <div>
+                            <span class="block font-black uppercase tracking-widest text-xs">David R.</span>
+                            <span class="block text-[10px] uppercase tracking-widest opacity-40">Blues Musician</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cart Drawer -->
+        <div id="cart-drawer"
+            class="fixed top-0 right-0 h-full w-full md:w-[450px] bg-background shadow-[-20px_0_50px_rgba(0,0,0,0.1)] z-[200] closed p-8 flex flex-col border-l border-primary/10">
+            <div class="flex justify-between items-center mb-12">
+                <h2 class="text-4xl font-black uppercase tracking-tighter text-primary">Your Order<span
+                        class="text-cta">.</span></h2>
+                <button onclick="toggleCart()"
+                    class="text-xs font-black uppercase tracking-widest text-primary/50 hover:text-primary transition-colors">Close</button>
+            </div>
+
+            <div id="cart-items" class="flex-grow overflow-y-auto space-y-8 pr-4">
+                <!-- Items injected via JS -->
+                <p class="text-center text-secondary/40 py-20 text-sm font-bold uppercase tracking-widest">Ritual Empty.
+                </p>
+            </div>
+
+            <div class="pt-8 border-t border-primary/10 space-y-6">
+                <div class="flex justify-between text-2xl font-black uppercase text-primary">
+                    <span>Total</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+                <button onclick="openCheckout()" id="checkout-btn"
+                    class="w-full bg-primary text-background py-5 rounded-full font-black uppercase tracking-[0.2em] hover:bg-text hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-20 disabled:pointer-events-none"
+                    disabled>
+                    Checkout Now
+                </button>
+            </div>
+        </div>
+
+        <!-- Checkout Modal -->
+        <div id="checkout-modal" class="modal fixed inset-0 z-[300] flex items-center justify-center p-0 md:p-6">
+            <div
+                class="bg-background w-full h-full md:h-auto max-w-2xl rounded-none md:rounded-[3rem] p-6 md:p-12 shadow-2xl relative overflow-y-auto border border-primary/10">
+                <button onclick="closeCheckout()"
+                    class="absolute top-6 right-6 md:top-8 md:right-8 text-primary/30 hover:text-primary text-xl transition-colors">✕</button>
+
+                <div id="checkout-step-1" class="space-y-12">
+                    <div class="space-y-4">
+                        <span class="text-xs font-black uppercase tracking-[0.3em] text-cta block">Step 01</span>
+                        <h3 class="text-5xl font-black uppercase tracking-tighter text-primary leading-none">Checkout
+                            Details.</h3>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="space-y-2">
+                            <label
+                                class="text-[10px] font-black uppercase tracking-widest text-primary/40 block ml-4">Full
+                                Name</label>
+                            <input type="text" placeholder="John Coltrane"
+                                class="w-full bg-primary/5 border-none p-4 rounded-2xl focus:ring-2 ring-cta outline-none text-primary font-bold placeholder:text-primary/20">
+                        </div>
+                        <div class="space-y-2">
+                            <label
+                                class="text-[10px] font-black uppercase tracking-widest text-primary/40 block ml-4">Phone
+                                Number</label>
+                            <input type="tel" placeholder="(901) 555-0123"
+                                class="w-full bg-primary/5 border-none p-4 rounded-2xl focus:ring-2 ring-cta outline-none text-primary font-bold placeholder:text-primary/20">
+                        </div>
+                        <div class="md:col-span-2 space-y-2">
+                            <label
+                                class="text-[10px] font-black uppercase tracking-widest text-primary/40 block ml-4">Fictional
+                                Address (Memphis, TN)</label>
+                            <input type="text" placeholder="789 Blues Avenue"
+                                class="w-full bg-primary/5 border-none p-4 rounded-2xl focus:ring-2 ring-cta outline-none text-primary font-bold placeholder:text-primary/20">
+                        </div>
+                    </div>
+
+                    <button onclick="processOrder()"
+                        class="w-full bg-primary text-background py-5 rounded-full font-black uppercase tracking-[0.2em] hover:bg-text transition-all">
+                        Complete Simulated Order
+                    </button>
+                </div>
+
+                <div id="checkout-success" class="hidden text-center space-y-10 py-10">
+                    <div
+                        class="w-24 h-24 bg-cta/20 text-cta rounded-full flex items-center justify-center mx-auto mb-8">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                    </div>
+                    <div class="space-y-4">
+                        <h3 class="text-5xl font-black uppercase tracking-tighter text-primary leading-none">Soul
+                            Received.
+                        </h3>
+                        <p class="text-lg text-secondary/60 max-w-md mx-auto">Your artisanal order has been simulated.
+                            We're
+                            "roasting" it right now. Thanks for visiting Memphis Brew Company.</p>
+                    </div>
+                    <button onclick="location.reload()"
+                        class="bg-primary text-background px-12 py-4 rounded-full font-black uppercase tracking-widest text-xs hover:scale-105 transition-all">
+                        Return to Ritual
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer id="locations" class="py-20 px-4 md:px-6 border-t border-primary/10">
+            <div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-24">
+                <div class="md:col-span-2 space-y-8">
+                    <h2 class="text-3xl md:text-4xl font-black tracking-tighter uppercase text-primary">Memphis Brew
+                        Company
                     </h2>
-                    <p class="text-xl md:text-2xl font-light leading-relaxed opacity-80">
-                        Memphis is a city built on soul. At MBC, we channel that raw energy into every bean. Our space
-                        is intentionally quiet, allowing the ritual of coffee to take center stage. No clutter, no
-                        noise—just pure craft.
-                    </p>
-                    <div class="grid grid-cols-2 gap-8 pt-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-12">
                         <div>
-                            <span class="block text-4xl font-black text-cta mb-2">01.</span>
-                            <span class="text-xs font-bold uppercase tracking-widest block mb-4">The Roast</span>
-                            <p class="text-sm opacity-60">Small batch precision. Profiled for depth and clarity.</p>
+                            <h4 class="text-xs font-black uppercase tracking-widest text-cta mb-4">Midtown Sanctuary
+                            </h4>
+                            <p class="text-sm opacity-60 leading-relaxed">
+                                123 Madison Ave<br>Memphis, TN 38104<br>(901) 323-4567<br>Daily: 7am — 8pm
+                            </p>
                         </div>
                         <div>
-                            <span class="block text-4xl font-black text-cta mb-2">02.</span>
-                            <span class="text-xs font-bold uppercase tracking-widest block mb-4">The Rhythm</span>
-                            <p class="text-sm opacity-60">Curated Memphis vinyl spinning daily. Analog vibes only.</p>
+                            <h4 class="text-xs font-black uppercase tracking-widest text-cta mb-4">Downtown Loft</h4>
+                            <p class="text-sm opacity-60 leading-relaxed">
+                                45 S Main St<br>Memphis, TN 38103<br>(901) 323-4567<br>Daily: 8am — 6pm
+                            </p>
                         </div>
                     </div>
                 </div>
-                <div class="relative">
-                    <div class="aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl">
-                        <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&q=80&w=2678"
-                            alt="Interior Design" class="w-full h-full object-cover">
-                    </div>
-                    <div class="absolute -bottom-10 -right-10 bg-cta text-primary p-12 rounded-full hidden md:block">
-                        <p class="text-xs font-black uppercase tracking-widest leading-none text-center">
-                            Est.<br><span class="text-3xl">2026</span><br>Memphis
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Story Section -->
-    <section id="story" class="py-20 md:py-32 px-4 md:px-6">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20">
-            <div class="space-y-8 md:space-y-12 reveal-on-scroll">
-                <span class="text-xs font-black uppercase tracking-[0.3em] text-cta block">Our Story</span>
-                <h2 class="text-4xl md:text-7xl font-black uppercase tracking-tighter text-primary leading-none">A
-                    Multi-Generational Family Soul.</h2>
-                <div class="space-y-6 text-xl text-secondary/80 leading-relaxed font-medium">
-                    <p>Memphis Brew Company isn't just a coffee shop. It's a living archive of the Williams family.
-                        Founded over three generations ago in the heart of Memphis, we’ve been perfecting the art of the
-                        roast since 1954.</p>
-                    <p>As a Black-owned family business, we believe that coffee is the rhythm of the city. We took the
-                        grit of Beale Street and the grace of the Mississippi to create a space where everyone is
-                        family. Passed down from father to daughter, the secret to our "Gold" roast remains within these
-                        walls.</p>
-                </div>
-            </div>
-            <div class="">
-                <div
-                    class="aspect-square rounded-[3rem] overflow-hidden shadow-2xl bg-primary/10 flex items-center justify-center">
-                    <img src="assets/coffee.PNG" alt="Williams Family Legacy" class="w-full h-full object-cover block"
-                        style="image-rendering: -webkit-optimize-contrast; image-rendering: high-quality;">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Menu Section -->
-    <section id="menu" class="py-20 md:py-32 px-4 md:px-6">
-        <div class="max-w-5xl mx-auto space-y-16 md:space-y-24">
-            <div class="text-center reveal-on-scroll">
-                <span class="text-xs font-black uppercase tracking-[0.3em] text-cta mb-4 block">The Selection</span>
-                <h2 class="text-5xl md:text-8xl font-black uppercase tracking-tighter text-primary">The Ritual Menu.
-                </h2>
-            </div>
-
-            <div class="space-y-12 md:space-y-16 reveal-on-scroll">
-                <!-- Menu Category -->
                 <div class="space-y-8">
-                    <h3
-                        class="text-xs font-black uppercase tracking-widest border-b border-primary/20 pb-4 text-primary/50">
-                        Signature Brews</h3>
-
-                    <div class="grid gap-8 md:gap-12">
-                        <!-- Menu Item -->
-                        <div
-                            class="menu-item group flex justify-between items-end pb-8 border-b border-primary/10 transition-all hover:bg-primary/5 px-0 md:px-4 md:-mx-4 rounded-xl">
-                            <div class="space-y-2">
-                                <h4
-                                    class="text-xl md:text-2xl font-bold text-primary group-hover:text-cta transition-colors">
-                                    Memphis Gold Latte</h4>
-                                <p class="text-xs md:text-sm text-secondary/60">House-made spiced honey, oat milk,
-                                    triple gold
-                                    dust.</p>
-                                <button onclick="addToCart('Memphis Gold Latte', 6.50)"
-                                    class="text-[10px] items-center font-black uppercase tracking-[0.2em] text-cta opacity-100 md:opacity-0 group-hover:opacity-100 transition-all pt-2 flex space-x-2">
-                                    <span>+ Add to Ritual</span>
-                                </button>
-                            </div>
-                            <span class="text-lg md:text-xl font-black text-primary">$6.50</span>
-                        </div>
-
-                        <div
-                            class="menu-item group flex justify-between items-end pb-8 border-b border-primary/10 transition-all hover:bg-primary/5 px-0 md:px-4 md:-mx-4 rounded-xl">
-                            <div class="space-y-2">
-                                <h4
-                                    class="text-xl md:text-2xl font-bold text-primary group-hover:text-cta transition-colors">
-                                    Beale
-                                    St. Black</h4>
-                                <p class="text-xs md:text-sm text-secondary/60">Nitro-charged cold brew with a subtle
-                                    hickory smoke
-                                    finish.</p>
-                                <button onclick="addToCart('Beale St. Black', 5.50)"
-                                    class="text-[10px] items-center font-black uppercase tracking-[0.2em] text-cta opacity-100 md:opacity-0 group-hover:opacity-100 transition-all pt-2 flex space-x-2">
-                                    <span>+ Add to Ritual</span>
-                                </button>
-                            </div>
-                            <span class="text-lg md:text-xl font-black text-primary">$5.50</span>
-                        </div>
-
-                        <div
-                            class="menu-item group flex justify-between items-end pb-8 border-b border-primary/10 transition-all hover:bg-primary/5 px-0 md:px-4 md:-mx-4 rounded-xl">
-                            <div class="space-y-2">
-                                <h4
-                                    class="text-xl md:text-2xl font-bold text-primary group-hover:text-cta transition-colors">
-                                    Delta
-                                    Pour Over</h4>
-                                <p class="text-xs md:text-sm text-secondary/60">Single origin Ethiopian beans. Bright,
-                                    floral,
-                                    soulful.</p>
-                                <button onclick="addToCart('Delta Pour Over', 4.75)"
-                                    class="text-[10px] items-center font-black uppercase tracking-[0.2em] text-cta opacity-100 md:opacity-0 group-hover:opacity-100 transition-all pt-2 flex space-x-2">
-                                    <span>+ Add to Ritual</span>
-                                </button>
-                            </div>
-                            <span class="text-lg md:text-xl font-black text-primary">$4.75</span>
-                        </div>
-                    </div>
+                    <h4 class="text-xs font-black uppercase tracking-widest text-primary">Socials</h4>
+                    <ul class="space-y-4 text-sm font-bold uppercase tracking-widest">
+                        <li><a href="#" class="hover:text-cta transition-colors">Instagram</a></li>
+                        <li><a href="#" class="hover:text-cta transition-colors">TikTok</a></li>
+                        <li><a href="#" class="hover:text-cta transition-colors">Twitter</a></li>
+                    </ul>
                 </div>
-
-                <!-- Footer Menu -->
-                <div class="text-center pt-12">
-                    <a href="#"
-                        class="inline-block border-2 border-primary text-primary px-10 py-4 rounded-full text-sm font-black uppercase tracking-widest hover:bg-primary hover:text-background transition-all">
-                        View Full Menu
-                    </a>
+                <div class="space-y-8 text-right md:text-left">
+                    <h4 class="text-xs font-black uppercase tracking-widest text-primary">Connect</h4>
+                    <p class="text-sm opacity-60 mb-6">Join our soulful roasting club.</p>
+                    <form class="flex border-b border-primary/30 pb-2">
+                        <input type="email" placeholder="Email"
+                            class="bg-transparent text-sm w-full focus:outline-none">
+                        <button type="submit"
+                            class="text-xs font-black uppercase tracking-widest text-primary">Join</button>
+                    </form>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Reviews Section -->
-    <section class="py-20 md:py-32 px-4 md:px-6 bg-primary text-background overflow-hidden">
-        <div class="max-w-7xl mx-auto space-y-16 md:space-y-24">
-            <div class="text-center reveal-on-scroll">
-                <span class="text-xs font-black uppercase tracking-[0.3em] text-cta mb-4 block">Testimonials</span>
-                <h2 class="text-5xl md:text-8xl font-black uppercase tracking-tighter">Pure Soul Approval.</h2>
+            <div
+                class="max-w-[1440px] mx-auto mt-20 pt-10 border-t border-primary/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-[10px] uppercase tracking-widest opacity-40">© 2026 Memphis Brew Co. All Soul Reserved.
+                </p>
+                <p class="text-[10px] uppercase tracking-widest opacity-40">Designed by SmartWeb Memphis</p>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <!-- Review 1 -->
-                <div
-                    class="space-y-6 md:space-y-8 p-8 md:p-12 bg-white/5 rounded-[2rem] border border-white/10 reveal-on-scroll">
-                    <div class="flex text-cta space-x-1">
-                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                    </div>
-                    <p class="text-lg md:text-xl font-medium leading-relaxed italic opacity-80">"The best espresso in
-                        the 901. You
-                        can literally taste the history. It's more than coffee; it's an experience."</p>
-                    <div>
-                        <span class="block font-black uppercase tracking-widest text-xs">Marcus J.</span>
-                        <span class="block text-[10px] uppercase tracking-widest opacity-40">Local Artist</span>
-                    </div>
-                </div>
-
-                <!-- Review 2 -->
-                <div class="space-y-8 p-12 bg-white/5 rounded-[2rem] border border-white/10 reveal-on-scroll"
-                    style="transition-delay: 100ms;">
-                    <div class="flex text-cta space-x-1">
-                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                    </div>
-                    <p class="text-xl font-medium leading-relaxed italic opacity-80">"Finally, a minimalist space that
-                        still feels like home. The Williams family knows exactly how to roast soul."</p>
-                    <div>
-                        <span class="block font-black uppercase tracking-widest text-xs">Sarah L.</span>
-                        <span class="block text-[10px] uppercase tracking-widest opacity-40">Community Leader</span>
-                    </div>
-                </div>
-
-                <!-- Review 3 -->
-                <div class="space-y-8 p-12 bg-white/5 rounded-[2rem] border border-white/10 reveal-on-scroll"
-                    style="transition-delay: 200ms;">
-                    <div class="flex text-cta space-x-1">
-                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                    </div>
-                    <p class="text-xl font-medium leading-relaxed italic opacity-80">"Unmatched vibes. The 'Memphis
-                        Gold' is liquid magic. Proud to support a multi-gen Black legacy."</p>
-                    <div>
-                        <span class="block font-black uppercase tracking-widest text-xs">David R.</span>
-                        <span class="block text-[10px] uppercase tracking-widest opacity-40">Blues Musician</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Cart Drawer -->
-    <div id="cart-drawer"
-        class="fixed top-0 right-0 h-full w-full md:w-[450px] bg-background shadow-[-20px_0_50px_rgba(0,0,0,0.1)] z-[200] closed p-8 flex flex-col border-l border-primary/10">
-        <div class="flex justify-between items-center mb-12">
-            <h2 class="text-4xl font-black uppercase tracking-tighter text-primary">Your Order<span
-                    class="text-cta">.</span></h2>
-            <button onclick="toggleCart()"
-                class="text-xs font-black uppercase tracking-widest text-primary/50 hover:text-primary transition-colors">Close</button>
-        </div>
-
-        <div id="cart-items" class="flex-grow overflow-y-auto space-y-8 pr-4">
-            <!-- Items injected via JS -->
-            <p class="text-center text-secondary/40 py-20 text-sm font-bold uppercase tracking-widest">Ritual Empty.</p>
-        </div>
-
-        <div class="pt-8 border-t border-primary/10 space-y-6">
-            <div class="flex justify-between text-2xl font-black uppercase text-primary">
-                <span>Total</span>
-                <span id="cart-total">$0.00</span>
-            </div>
-            <button onclick="openCheckout()" id="checkout-btn"
-                class="w-full bg-primary text-background py-5 rounded-full font-black uppercase tracking-[0.2em] hover:bg-text hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-20 disabled:pointer-events-none"
-                disabled>
-                Checkout Now
-            </button>
-        </div>
+        </footer>
     </div>
-
-    <!-- Checkout Modal -->
-    <div id="checkout-modal" class="modal fixed inset-0 z-[300] flex items-center justify-center p-0 md:p-6">
-        <div
-            class="bg-background w-full h-full md:h-auto max-w-2xl rounded-none md:rounded-[3rem] p-6 md:p-12 shadow-2xl relative overflow-y-auto border border-primary/10">
-            <button onclick="closeCheckout()"
-                class="absolute top-6 right-6 md:top-8 md:right-8 text-primary/30 hover:text-primary text-xl transition-colors">✕</button>
-
-            <div id="checkout-step-1" class="space-y-12">
-                <div class="space-y-4">
-                    <span class="text-xs font-black uppercase tracking-[0.3em] text-cta block">Step 01</span>
-                    <h3 class="text-5xl font-black uppercase tracking-tighter text-primary leading-none">Checkout
-                        Details.</h3>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="space-y-2">
-                        <label class="text-[10px] font-black uppercase tracking-widest text-primary/40 block ml-4">Full
-                            Name</label>
-                        <input type="text" placeholder="John Coltrane"
-                            class="w-full bg-primary/5 border-none p-4 rounded-2xl focus:ring-2 ring-cta outline-none text-primary font-bold placeholder:text-primary/20">
-                    </div>
-                    <div class="space-y-2">
-                        <label class="text-[10px] font-black uppercase tracking-widest text-primary/40 block ml-4">Phone
-                            Number</label>
-                        <input type="tel" placeholder="(901) 555-0123"
-                            class="w-full bg-primary/5 border-none p-4 rounded-2xl focus:ring-2 ring-cta outline-none text-primary font-bold placeholder:text-primary/20">
-                    </div>
-                    <div class="md:col-span-2 space-y-2">
-                        <label
-                            class="text-[10px] font-black uppercase tracking-widest text-primary/40 block ml-4">Fictional
-                            Address (Memphis, TN)</label>
-                        <input type="text" placeholder="789 Blues Avenue"
-                            class="w-full bg-primary/5 border-none p-4 rounded-2xl focus:ring-2 ring-cta outline-none text-primary font-bold placeholder:text-primary/20">
-                    </div>
-                </div>
-
-                <button onclick="processOrder()"
-                    class="w-full bg-primary text-background py-5 rounded-full font-black uppercase tracking-[0.2em] hover:bg-text transition-all">
-                    Complete Simulated Order
-                </button>
-            </div>
-
-            <div id="checkout-success" class="hidden text-center space-y-10 py-10">
-                <div class="w-24 h-24 bg-cta/20 text-cta rounded-full flex items-center justify-center mx-auto mb-8">
-                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                </div>
-                <div class="space-y-4">
-                    <h3 class="text-5xl font-black uppercase tracking-tighter text-primary leading-none">Soul Received.
-                    </h3>
-                    <p class="text-lg text-secondary/60 max-w-md mx-auto">Your artisanal order has been simulated. We're
-                        "roasting" it right now. Thanks for visiting Memphis Brew Company.</p>
-                </div>
-                <button onclick="location.reload()"
-                    class="bg-primary text-background px-12 py-4 rounded-full font-black uppercase tracking-widest text-xs hover:scale-105 transition-all">
-                    Return to Ritual
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer id="locations" class="py-20 px-4 md:px-6 border-t border-primary/10">
-        <div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-24">
-            <div class="md:col-span-2 space-y-8">
-                <h2 class="text-3xl md:text-4xl font-black tracking-tighter uppercase text-primary">Memphis Brew Company
-                </h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-12">
-                    <div>
-                        <h4 class="text-xs font-black uppercase tracking-widest text-cta mb-4">Midtown Sanctuary</h4>
-                        <p class="text-sm opacity-60 leading-relaxed">
-                            123 Madison Ave<br>Memphis, TN 38104<br>(901) 323-4567<br>Daily: 7am — 8pm
-                        </p>
-                    </div>
-                    <div>
-                        <h4 class="text-xs font-black uppercase tracking-widest text-cta mb-4">Downtown Loft</h4>
-                        <p class="text-sm opacity-60 leading-relaxed">
-                            45 S Main St<br>Memphis, TN 38103<br>(901) 323-4567<br>Daily: 8am — 6pm
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="space-y-8">
-                <h4 class="text-xs font-black uppercase tracking-widest text-primary">Socials</h4>
-                <ul class="space-y-4 text-sm font-bold uppercase tracking-widest">
-                    <li><a href="#" class="hover:text-cta transition-colors">Instagram</a></li>
-                    <li><a href="#" class="hover:text-cta transition-colors">TikTok</a></li>
-                    <li><a href="#" class="hover:text-cta transition-colors">Twitter</a></li>
-                </ul>
-            </div>
-            <div class="space-y-8 text-right md:text-left">
-                <h4 class="text-xs font-black uppercase tracking-widest text-primary">Connect</h4>
-                <p class="text-sm opacity-60 mb-6">Join our soulful roasting club.</p>
-                <form class="flex border-b border-primary/30 pb-2">
-                    <input type="email" placeholder="Email" class="bg-transparent text-sm w-full focus:outline-none">
-                    <button type="submit"
-                        class="text-xs font-black uppercase tracking-widest text-primary">Join</button>
-                </form>
-            </div>
-        </div>
-        <div
-            class="max-w-[1440px] mx-auto mt-20 pt-10 border-t border-primary/5 flex flex-col md:flex-row justify-between items-center gap-6">
-            <p class="text-[10px] uppercase tracking-widest opacity-40">© 2026 Memphis Brew Co. All Soul Reserved.</p>
-            <p class="text-[10px] uppercase tracking-widest opacity-40">Designed by SmartWeb Memphis</p>
-        </div>
-    </footer>
 
     <script>
         // Simple reveal on scroll observer
@@ -641,15 +678,18 @@
         // Mobile Menu Logic
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
+            const content = document.getElementById('main-content');
             const path = document.getElementById('menu-icon-path');
             const isOpen = menu.classList.contains('open');
 
             if (isOpen) {
                 menu.classList.remove('open');
+                content.classList.remove('blurred');
                 document.body.classList.remove('no-scroll');
                 path.setAttribute('d', 'M4 8h16M4 16h16');
             } else {
                 menu.classList.add('open');
+                content.classList.add('blurred');
                 document.body.classList.add('no-scroll');
                 path.setAttribute('d', 'M6 18L18 6M6 6l12 12');
             }
