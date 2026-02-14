@@ -28,7 +28,7 @@
                         sans: ['"DM Sans"', 'sans-serif'],
                     },
                     fontSize: {
-                        'huge': ['clamp(3.5rem, 12vw, 14rem)', { lineHeight: '0.85', letterSpacing: '-0.05em' }],
+                        'huge': ['clamp(3rem, 10vw, 12rem)', { lineHeight: '0.85', letterSpacing: '-0.05em' }],
                     }
                 }
             }
@@ -191,16 +191,17 @@
         <!-- Hero Section -->
         <section class="relative min-h-screen flex flex-col justify-end pt-32 pb-20 px-6 overflow-hidden">
             <div class="absolute inset-0 z-0">
-                <!-- Using Unsplash for high-quality artisanal images if generation is pending -->
-                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=2670"
-                    alt="Artisanal Coffee" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+                <video id="hero-video" autoplay muted loop playsinline
+                    class="w-full h-full object-cover origin-center scale-[0.95] lg:scale-100">
+                    <source src="assets/Memphis Brew.mp4" type="video/mp4">
+                </video>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40"></div>
             </div>
 
             <div class="relative z-10 max-w-[1440px] mx-auto w-full">
                 <div class="max-w-4xl space-y-12 reveal-on-scroll">
                     <h1 class="text-huge font-black tracking-tighter text-primary uppercase">
-                        Memphis<br>Brew Co<span class="text-cta">.</span>
+                        Memphis<br><span class="text-cta">Brew Co.</span>
                     </h1>
                     <div class="flex flex-col md:flex-row md:items-end gap-8">
                         <p class="text-xl md:text-3xl font-medium leading-tight max-w-xl text-secondary">
@@ -255,6 +256,12 @@
                                 <p class="text-sm opacity-60">Curated Memphis vinyl spinning daily. Analog vibes only.
                                 </p>
                             </div>
+                            <div class="col-span-2">
+                                <span class="block text-4xl font-black text-cta mb-2">03.</span>
+                                <span class="text-xs font-bold uppercase tracking-widest block mb-4">The Ritual</span>
+                                <p class="text-sm opacity-60">A sacred daily pause. Where the city slows down and
+                                    community breathes.</p>
+                            </div>
                         </div>
                     </div>
                     <div class="relative">
@@ -265,7 +272,7 @@
                         <div
                             class="absolute -bottom-10 -right-10 bg-cta text-primary p-12 rounded-full hidden md:block">
                             <p class="text-xs font-black uppercase tracking-widest leading-none text-center">
-                                Est.<br><span class="text-3xl">2026</span><br>Memphis
+                                Est.<br><span class="text-3xl">1954</span><br>Memphis
                             </p>
                         </div>
                     </div>
@@ -328,9 +335,9 @@
                                     <h4
                                         class="text-xl md:text-2xl font-bold text-primary group-hover:text-cta transition-colors">
                                         Memphis Gold Latte</h4>
-                                    <p class="text-xs md:text-sm text-secondary/60">House-made spiced honey, oat milk,
-                                        triple gold
-                                        dust.</p>
+                                    <p class="text-xs md:text-sm text-secondary/60">Our signature espresso layered with
+                                        house-made spiced honey, steamed oat milk, and finished with a dusting of edible
+                                        24k gold. A tribute to the soul of the city.</p>
                                     <button onclick="addToCart('Memphis Gold Latte', 6.50)"
                                         class="text-[10px] items-center font-black uppercase tracking-[0.2em] text-cta opacity-100 md:opacity-0 group-hover:opacity-100 transition-all pt-2 flex space-x-2">
                                         <span>+ Add to Ritual</span>
@@ -346,10 +353,9 @@
                                         class="text-xl md:text-2xl font-bold text-primary group-hover:text-cta transition-colors">
                                         Beale
                                         St. Black</h4>
-                                    <p class="text-xs md:text-sm text-secondary/60">Nitro-charged cold brew with a
-                                        subtle
-                                        hickory smoke
-                                        finish.</p>
+                                    <p class="text-xs md:text-sm text-secondary/60">Velvety nitro-charged cold brew
+                                        infused with a whisper of hickory smoke. Smooth, bold, and dark as a Memphis
+                                        midnight.</p>
                                     <button onclick="addToCart('Beale St. Black', 5.50)"
                                         class="text-[10px] items-center font-black uppercase tracking-[0.2em] text-cta opacity-100 md:opacity-0 group-hover:opacity-100 transition-all pt-2 flex space-x-2">
                                         <span>+ Add to Ritual</span>
@@ -365,10 +371,9 @@
                                         class="text-xl md:text-2xl font-bold text-primary group-hover:text-cta transition-colors">
                                         Delta
                                         Pour Over</h4>
-                                    <p class="text-xs md:text-sm text-secondary/60">Single origin Ethiopian beans.
-                                        Bright,
-                                        floral,
-                                        soulful.</p>
+                                    <p class="text-xs md:text-sm text-secondary/60">Single origin Ethiopian Yirgacheffe.
+                                        A delicate dance of jasmine and citrus notes, hand-poured to perfection. Pure,
+                                        unadulterated soul.</p>
                                     <button onclick="addToCart('Delta Pour Over', 4.75)"
                                         class="text-[10px] items-center font-black uppercase tracking-[0.2em] text-cta opacity-100 md:opacity-0 group-hover:opacity-100 transition-all pt-2 flex space-x-2">
                                         <span>+ Add to Ritual</span>
@@ -376,16 +381,62 @@
                                 </div>
                                 <span class="text-lg md:text-xl font-black text-primary">$4.75</span>
                             </div>
+
+                            <!-- New Items -->
+                            <div
+                                class="menu-item group flex justify-between items-end pb-8 border-b border-primary/10 transition-all hover:bg-primary/5 px-0 md:px-4 md:-mx-4 rounded-xl">
+                                <div class="space-y-2">
+                                    <h4
+                                        class="text-xl md:text-2xl font-bold text-primary group-hover:text-cta transition-colors">
+                                        The Soulsville Mocha</h4>
+                                    <p class="text-xs md:text-sm text-secondary/60">Heritage dark chocolate melted into
+                                        espresso, finished with a whisper of cayenne pepper. Deep, complex, and full of
+                                        history.</p>
+                                    <button onclick="addToCart('The Soulsville Mocha', 6.00)"
+                                        class="text-[10px] items-center font-black uppercase tracking-[0.2em] text-cta opacity-100 md:opacity-0 group-hover:opacity-100 transition-all pt-2 flex space-x-2">
+                                        <span>+ Add to Ritual</span>
+                                    </button>
+                                </div>
+                                <span class="text-lg md:text-xl font-black text-primary">$6.00</span>
+                            </div>
+
+                            <div
+                                class="menu-item group flex justify-between items-end pb-8 border-b border-primary/10 transition-all hover:bg-primary/5 px-0 md:px-4 md:-mx-4 rounded-xl">
+                                <div class="space-y-2">
+                                    <h4
+                                        class="text-xl md:text-2xl font-bold text-primary group-hover:text-cta transition-colors">
+                                        1954 Espresso Tonic</h4>
+                                    <p class="text-xs md:text-sm text-secondary/60">Double shot of 'Gold' pulled over
+                                        premium elderflower tonic and ice. Effervescent, crisp, and surprisingly
+                                        timeless.</p>
+                                    <button onclick="addToCart('1954 Espresso Tonic', 5.00)"
+                                        class="text-[10px] items-center font-black uppercase tracking-[0.2em] text-cta opacity-100 md:opacity-0 group-hover:opacity-100 transition-all pt-2 flex space-x-2">
+                                        <span>+ Add to Ritual</span>
+                                    </button>
+                                </div>
+                                <span class="text-lg md:text-xl font-black text-primary">$5.00</span>
+                            </div>
+
+                            <div
+                                class="menu-item group flex justify-between items-end pb-8 border-b border-primary/10 transition-all hover:bg-primary/5 px-0 md:px-4 md:-mx-4 rounded-xl">
+                                <div class="space-y-2">
+                                    <h4
+                                        class="text-xl md:text-2xl font-bold text-primary group-hover:text-cta transition-colors">
+                                        High Water Cortado</h4>
+                                    <p class="text-xs md:text-sm text-secondary/60">Equal parts espresso and textured
+                                        milk, served at the perfect drinking temperature. Smooth as the rising river.
+                                    </p>
+                                    <button onclick="addToCart('High Water Cortado', 4.50)"
+                                        class="text-[10px] items-center font-black uppercase tracking-[0.2em] text-cta opacity-100 md:opacity-0 group-hover:opacity-100 transition-all pt-2 flex space-x-2">
+                                        <span>+ Add to Ritual</span>
+                                    </button>
+                                </div>
+                                <span class="text-lg md:text-xl font-black text-primary">$4.50</span>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Footer Menu -->
-                    <div class="text-center pt-12">
-                        <a href="#"
-                            class="inline-block border-2 border-primary text-primary px-10 py-4 rounded-full text-sm font-black uppercase tracking-widest hover:bg-primary hover:text-background transition-all">
-                            View Full Menu
-                        </a>
-                    </div>
+
                 </div>
             </div>
         </section>
@@ -596,6 +647,10 @@
     </div>
 
     <script>
+        // Simple reveal on scroll observer
+        // Video Playback Speed
+        document.getElementById('hero-video').playbackRate = 0.7;
+
         // Simple reveal on scroll observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
